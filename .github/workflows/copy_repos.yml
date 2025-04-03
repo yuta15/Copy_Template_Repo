@@ -17,7 +17,8 @@ jobs:
               uses: actions/checkout@v4
 
             - name: set_up_python_environment
-              run: pip install pygithub
+              run: pip install pygithub &&\
+                   pip list
 
             - name: run_python_script
               run: |
