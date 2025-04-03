@@ -1,0 +1,23 @@
+name: copy_repos_workflow
+on: 
+    workflow_dispatch:
+        inputs:
+            create_repo_name:
+                required: true
+env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+    create_repo:
+        runs-on: ubuntu-latest
+        container:
+            image: python:3.11.11
+        steps:
+            - name: checkout_repos
+              uses: actions/checkout@v4
+
+            - name: set_up_python_environment
+              run: pip install -r requirements.txt
+
+            - name: run_python_script
+              run: ./create_repo.py
