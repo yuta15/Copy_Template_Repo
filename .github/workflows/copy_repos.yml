@@ -25,4 +25,4 @@ jobs:
             - name: run_python_script
               run: |
                     chmod 750 create_repo.py &&\
-                    ./create_repo.py
+                    python3 create_repo.py
