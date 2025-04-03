@@ -20,4 +20,6 @@ jobs:
               run: pip install -r requirements.txt
 
             - name: run_python_script
-              run: ./create_repo.py
+              run: |
+                    chmod 750 create_repo.py &&\
+                    ./create_repo.py
