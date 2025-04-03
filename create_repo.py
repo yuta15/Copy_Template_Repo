@@ -12,7 +12,7 @@ GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN')
 CURRENT_PATH = os.getcwd()
 
 # 設定値の読み込み
-with open(file=CURRENT_PATH+'params.json') as f:
+with open(file=CURRENT_PATH+'/'+'params.json') as f:
     INPUT_PARAMS = json.loads(f.read())
 
 
@@ -42,7 +42,7 @@ def validate_params():
         if export_port is None or app_container_ip is None:
             logging.error('app_container.export_port or app_container.app_container_ip is required')
         try:
-            ipaddress.ip_interaface(app_container_ip+'/24')
+            ipaddress.ip_interface(app_container_ip+'/24')
         except ValueError:
             sys.exit()
 
