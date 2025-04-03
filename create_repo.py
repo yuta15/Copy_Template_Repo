@@ -1,4 +1,6 @@
-from github import Github
+#!/usr/bin/env python3
+
+from github import Github, Auth
 import os
 import json
 import ipaddress
@@ -9,6 +11,8 @@ import logging
 
 # 環境変数/グローバル変数の読み込み
 GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN')
+auth = Auth.Token(GITHUB_TOKEN)
+github = Github(auth=auth)
 CURRENT_PATH = os.getcwd()
 
 # 設定値の読み込み
