@@ -1,0 +1,16 @@
+{
+    "repository_params":{
+        "repository_name": "",
+        "branches": []
+    },
+    "app_container":{
+        "export_port": 5000,
+        "run_cmd": [],
+        "container_ip": "172.18.0.10"
+    },
+    "db_container": {
+        "export_port": 3306,
+        "container_ip": "172.19.0.10"
+    }
+    
+}
