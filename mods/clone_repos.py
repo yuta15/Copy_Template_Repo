@@ -1,0 +1,16 @@
+import os
+import git
+
+from mods.setting import setting
+from mods.parameter_model import ParameterModel
+from mods.logger import set_logger
+
+def clone_repos(repo_params: ParameterModel):
+    """ファイルを作成する関数"""
+    logger = set_logger(__name__)
+    os.mkdir(f'{setting.ROOT_DIR}/templates')
+    for url in repo_params.repository.clone_repositorys:
+        path = f'{setting.ROOT_DIR}/templates/{url.split("/")[-1].url.split(".")[0]}'
+        git.Repo.clone_from(url, path)
+    logger.info(f"Clone completed in {setting.ROOT_DIR}/templates")
+    

@@ -1,17 +1,17 @@
 import os
+import yaml
 import json
-import ipaddress
+from github import Github
+
+from mods.read_params import read_params
+from mods.setting import setting
+from mods.set_docker_compose import set_docker_compose
 
 
-# json_path = os.getcwd() + '/'+'params.json'
-# with open(json_path, mode='r') as f:
-#     content = json.loads(f.read())
-    
-# print(content.get('repository_params1', None))
+g = Github(setting.GITHUB_TOKEN)
+user = g.get_user()
+repo = user.get_repo(
+    'test6'
+)
 
-ip1 = '192.168.1.1'+'/24'
-obj = ipaddress.ip_interface(ip1)
-
-print(str(obj.ip))
-print(obj.network)
-
+print(repo.html_url)

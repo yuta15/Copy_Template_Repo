@@ -1,16 +1,43 @@
 {
-    "repository_params":{
-        "repository_name": "sss",
-        "branches": []
+    "repository":{
+        "repository_name": "test",
+        "branches": ["test"],
+        "clone_repository": [
+            "https://github.com/yuta15/template_python_app.git"
+        ]
     },
-    "app_container":{
-        "export_port": 5000,
-        "run_cmd": [],
-        "container_ip": "172.18.0.10"
-    },
-    "db_container": {
-        "export_port": 3306,
-        "container_ip": "172.19.0.10"
-    }
-    
+    "container_nw":[
+        {
+            "nw_name":"frontend",
+            "driver":"default",
+            "subnet": "192.168.1.0/24"
+        },
+        {
+            "nw_name":"backend",
+            "driver":"default",
+            "subnet": "192.168.2.0/24"
+        }
+    ],
+    "containers":[
+        {
+            "container_name": "test",
+            "image": "image_name",
+            "ports": ["8000:8000"],
+            "workdir": "container_workdir",
+            "volumes":[
+                {
+                    "type": "bind",
+                    "source": "host_file_path",
+                    "target": "container_file_path"
+                }
+            ],
+            "netowrks":[
+                {
+                    "nw_name": "frontend",
+                    "ip_address": "192.168.1.10"
+                }
+            ],
+            "command": []
+        }
+    ]
 }
