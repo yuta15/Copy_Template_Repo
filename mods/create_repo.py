@@ -23,6 +23,8 @@ def create_repo(repo_params: ParameterModel):
             description=repo_params.repository.repository_name,
             auto_init=True,
         )
+        # createしたリポジトリをローカルへclone(/templatesとして作成)
+
     except GithubException as e:
         logger.error(f"Failed to create repository: {e}")
         sys.exit(1)

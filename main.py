@@ -16,4 +16,4 @@ def main():
     created_repo = create_repo(PARAMS)
     clone_repos(PARAMS)
     set_docker_compose(PARAMS)
-    push_files(create_repo)
+    push_files(created_repo)
