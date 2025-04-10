@@ -13,6 +13,9 @@ jobs:
             - name: checkout_repos
               uses: actions/checkout@v4
 
+            - name: check_dir
+              run: ls -lah
+
             - name: set_up_python_environment
               run: |
                    pip install --upgrade pip && \
