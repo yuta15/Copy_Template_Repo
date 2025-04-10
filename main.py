@@ -9,14 +9,15 @@ from mods.create_repo import create_repo
 from mods.clone_repos import clone_repos
 from mods.set_docker_compose import set_docker_compose
 from mods.push_files import push_files
+from mods.logger import set_logger
 
 def main():
     """main function"""
-    
+    logger = set_logger(__name__)
     PARAMS = read_params()
     repo = create_repo(PARAMS)
     clone_repos(PARAMS)
-    os.listdir(f"{setting.ROOT_DIR}/templates")
+    logger.info(os.listdir(f"{setting.ROOT_DIR}/templates"))
     set_docker_compose(PARAMS)
     push_files(repo)
 
