@@ -17,13 +17,19 @@ def create_repo(repo_params: ParameterModel):
     g = Github(setting.GITHUB_TOKEN)
     user = g.get_user()
     try:
-        repo = user.create_repo(
-            name=repo_params.repository.repository_name,
-            private=False,
-            description=repo_params.repository.repository_name,
-            auto_init=True,
-        )
-        # createしたリポジトリをローカルへclone(/templatesとして作成)
+        # リポジトリの重複チェック
+        repos = user.get_repos()
+        if not repo_params.repository.repository_name in repos:
+            repo = user.create_repo(
+                name=repo_params.repository.repository_name,
+                private=False,
+                description=repo_params.repository.repository_name,
+                auto_init=True,
+            )
+        else:
+            logger.info(f"Repository {repo_params.repository.repository_name} already exists.")
+            repo = repos.get(repo_params.repository.repository_name)
+            
 
     except GithubException as e:
         logger.error(f"Failed to create repository: {e}")
