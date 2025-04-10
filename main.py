@@ -13,7 +13,7 @@ def main():
     """main function"""
     
     PARAMS = read_params()
-    created_repo = create_repo(PARAMS)
+    repo = create_repo(PARAMS)
     clone_repos(PARAMS)
     set_docker_compose(PARAMS)
-    push_files(created_repo)
+    push_files(repo)

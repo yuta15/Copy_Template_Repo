@@ -1,9 +1,6 @@
 name: copy_repos_workflow
 on: 
     workflow_dispatch:
-        inputs:
-            create_repo_name:
-                required: true
 env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
