@@ -11,7 +11,7 @@ def clone_repos(repo_params: ParameterModel):
     logger = set_logger(__name__)
     if not os.path.exists(f'{setting.ROOT_DIR}/templates'):
         os.mkdir(f'{setting.ROOT_DIR}/templates')
-    for url in repo_params.repository.clone_repositorys:
+    for url in repo_params.repository.clone_repository:
         path = f'{setting.ROOT_DIR}/templates/{url.split("/")[-1].url.split(".")[0]}'
         git.Repo.clone_from(url, path)
     logger.info(f"Clone completed in {setting.ROOT_DIR}/templates")
