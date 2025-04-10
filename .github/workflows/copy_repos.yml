@@ -19,10 +19,10 @@ jobs:
             - name: set_up_python_environment
               run: |
                    pip install --upgrade pip && \
-                   pip install pygithub && \
+                   pip install -r requirements.txt &&\
                    pip list
 
             - name: run_python_script
               run: |
                     chmod 750 create_repo.py &&\
-                    bash create_repo.py
+                    bash main.py
