@@ -25,4 +25,4 @@ jobs:
             - name: run_python_script
               run: |
                     chmod 750 main.py &&\
-                    bash main.py
+                    ./main.py
