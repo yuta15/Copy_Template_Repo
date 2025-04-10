@@ -1,4 +1,6 @@
 #!/usr/bin/env python
 
 
-print('test.py')
+a = 'dsfs/sdfskjdf'
+a.split('/')
+print(a.split('/')[-1])
