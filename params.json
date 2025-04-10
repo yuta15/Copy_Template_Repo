@@ -2,7 +2,7 @@
     "repository":{
         "repository_name": "copied_repo_1234445",
         "branches": ["test"],
-        "clone_repository": [
+        "clone_repositories": [
             "https://github.com/yuta15/template_python_app.git"
         ]
     },
