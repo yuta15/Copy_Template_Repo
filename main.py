@@ -3,7 +3,7 @@
 import sys
 import os   
 
-from mods.setting import Settings
+from mods.setting import setting
 from mods.read_params import read_params
 from mods.create_repo import create_repo
 from mods.clone_repos import clone_repos
@@ -16,7 +16,7 @@ def main():
     PARAMS = read_params()
     repo = create_repo(PARAMS)
     clone_repos(PARAMS)
-    os.listdir(f"{Settings.ROOT_DIR}/templates")
+    os.listdir(f"{setting.ROOT_DIR}/templates")
     set_docker_compose(PARAMS)
     push_files(repo)
 
