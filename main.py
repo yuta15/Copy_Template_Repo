@@ -19,3 +19,7 @@ def main():
     os.listdir(f"{Settings.ROOT_DIR}/templates")
     set_docker_compose(PARAMS)
     push_files(repo)
+
+
+if __name__ == "__main__":
+    main()
