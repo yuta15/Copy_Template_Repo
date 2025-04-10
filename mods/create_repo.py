@@ -28,8 +28,10 @@ def create_repo(repo_params: ParameterModel):
             )
         else:
             logger.info(f"Repository {repo_params.repository.repository_name} already exists.")
-            repo = repos.get(repo_params.repository.repository_name)
-
+            for repo in repos:
+                if repo.name == repo_params.repository.repository_name:
+                    repo = repo
+                    break
 
     except GithubException as e:
         logger.error(f"Failed to create repository: {e}")
