@@ -28,7 +28,7 @@ class RepositoryModel(BaseModel):
     """Repository model for Repository params."""
     repository_name: str = Field(..., title="Repository name", description="Name of the repository")
     branches: List[str] = Field(..., title="Branches", description="List of branches to be created")
-    clone_repositorys: List[str] | None = Field(default=None, title="Clone repositories", description="List of repositories to be cloned")
+    clone_repositories: List[str] | None = Field(default=None, title="Clone repositories", description="List of repositories to be cloned")
 
 
 class ContainerModel(BaseModel):
