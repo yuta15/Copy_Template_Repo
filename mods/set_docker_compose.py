@@ -1,9 +1,11 @@
 import yaml
 from typing import List
+import os
 
 from mods.setting import setting
 from mods.parameter_model import ParameterModel, ContainerNetowrkModel, ContainerInterfaceModel
 from mods.logger import set_logger
+from mods.exec_cmd import exec_cmd
 
 
 def set_docker_compose(repo_params: ParameterModel):
@@ -12,12 +14,21 @@ def set_docker_compose(repo_params: ParameterModel):
     """
     logger = set_logger(__name__)
     try:
+        # change directory to templates
+        os.chdir(setting.ROOT_DIR+"/templates")
+        logger.info(f'change dir:\n{exec_cmd("ls -la && pwd")}')
+        
+        # docker-compose.ymlの作成
         logger.info(f'set docker-compose.yml')
         container_params = set_containers_dict(repo_params.containers)
         container_nw = set_nw_to_dict(repo_params.container_nw)
         container_full = container_params | container_nw
+        
+        # docker-compose.ymlの書き込み
         with open(f'{setting.ROOT_DIR}/templates/docker-compose.yml', 'w') as f:
             f.write(yaml.safe_dump(container_full))
+        logger.info(f'change dir:\n{exec_cmd("ls -la")}')
+        
     except Exception as e:
         logger.error(f'Error in set_docker_compose: {e}')
         raise e

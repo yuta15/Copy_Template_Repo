@@ -1,7 +1,9 @@
 import git
 import os
+
 from mods.logger import set_logger
 from mods.setting import setting
+from mods.exec_cmd import exec_cmd
 
 
 def push_files(repo):
@@ -11,15 +13,10 @@ def push_files(repo):
     
     try:
         # リポジトリ変更
-        remote_repo_url = f'https://{setting.PERSONAL_TOKEN}@github.com/{setting.USERNAME}/{repo.name}.git'
         os.chdir(setting.ROOT_DIR+"/templates")
-        
-        logger.info('Initializing repository...')
-        repository = git.Repo.init()
-        
-        logger.info('create remote...')
-        remote = repository.create_remote(name="origin", url=remote_repo_url)
+        repository = git.Repo()
         index = repository.index
+        remote = repository.remote(name="origin")
 
         logger.info('pulling...')
         remote.pull('main')
@@ -51,17 +48,3 @@ def push_files(repo):
     
     else:
         logger.info("Push completed")
-        
-        
-def exec_cmd(cmd):
-    """コマンドを実行する関数"""
-    logger = set_logger(__name__)
-    logger.info(f"Executing command: {cmd}")
-    
-    try:
-        logger.info(os.system(cmd))
-    except Exception as e:
-        logger.error(f"Command execution failed: {e}")
-        raise
-    else:
-        logger.info("Command executed successfully")

@@ -16,6 +16,7 @@ def main():
     logger = set_logger(__name__)
     PARAMS = read_params()
     repo = create_repo(PARAMS)
+    init_repo(repo)
     clone_repos(PARAMS)
     logger.info(f'{os.listdir(f"{setting.ROOT_DIR}/templates")}')
     set_docker_compose(PARAMS)
