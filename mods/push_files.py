@@ -43,7 +43,7 @@ def push_files(repo):
         index.commit("Add files")
         
         logger.info('pushing...')
-        remote.push(act_branch)
+        remote.push('remotes/origin/main')
         
     except Exception as e:
         logger.error(f"Push failed: {e}")
