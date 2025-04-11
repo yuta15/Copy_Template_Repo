@@ -20,10 +20,7 @@ def push_files(repo):
         logger.info('create remote...')
         remote = repository.create_remote(name="origin", url=remote_repo_url)
         index = repository.index
-        
-        act_branch = repository.active_branch.name
-        logger.info(f"Active branch: {act_branch}")
-        
+
         logger.info('pulling...')
         remote.pull('main')
         
@@ -36,7 +33,9 @@ def push_files(repo):
         logger.info('check out to main branch...')
         exec_cmd('git checkout -b main')
         
-
+        act_branch = repository.active_branch.name
+        logger.info(f"Active branch: {act_branch}")
+        
         logger.info('Adding files...')
         index.add("*")
         
