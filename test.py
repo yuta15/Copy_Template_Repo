@@ -27,6 +27,9 @@ print(repository.head.is_valid())
 
 with open('test12.py', 'w') as f:
     f.write('test12')
+    
+    
+index.checkout()
 
 print(os.getcwd())
 print(os.listdir())
@@ -36,4 +39,3 @@ print(os.listdir())
 index.commit("Add files")
 print(os.getcwd())
 print(os.listdir())
-remote.push('refs/heads/main')
