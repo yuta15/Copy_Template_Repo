@@ -1,5 +1,7 @@
-import os
+import git
 
-print(os.listdir())
-os.chdir("mods")
-print(os.listdir())
+repository = git.Repo.init('../test')
+remote = repository.create_remote(name="origin", url='https://github.com/yuta15/test6.git')
+index = repository.index
+remote.pull('main')
+print(repository.branches)

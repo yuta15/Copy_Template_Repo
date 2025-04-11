@@ -3,6 +3,7 @@ import os
 from mods.logger import set_logger
 from mods.setting import setting
 
+
 def push_files(repo):
     """templates内のファイルをpushする関数"""
     logger = set_logger(__name__)
@@ -14,8 +15,8 @@ def push_files(repo):
         repository = git.Repo.init(f'{setting.ROOT_DIR}/templates')
         remote = repository.create_remote(name="origin", url=repo.html_url)
         index = repository.index
-        
         remote.pull('main')
+        logger.info(repository.branches)
         index.add(["."])
         index.commit("Add files")
         remote.push('main')
