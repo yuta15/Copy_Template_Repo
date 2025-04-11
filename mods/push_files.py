@@ -11,11 +11,11 @@ def push_files(repo):
     
     try:
         # リポジトリ変更
-        remote_repo_url = f'git@github.com:{setting.USERNAME}:{setting.GITHUB_TOKEN}/{repo.name}.git'
+        remote_repo_url = f''
         os.chdir(setting.ROOT_DIR+"/templates")
         
         logger.info('Initializing repository...')
-        repository = git.Repo.init(f'{setting.ROOT_DIR}/templates')
+        repository = git.Repo.init()
         
         logger.info('create remote...')
         remote = repository.create_remote(name="origin", url=remote_repo_url)
@@ -29,7 +29,7 @@ def push_files(repo):
         
         logger.info(repository.branches)
         logger.info('Adding files...')
-        index.add(["."])
+        index.add("*")
         
         logger.info('committing...')
         index.commit("Add files")

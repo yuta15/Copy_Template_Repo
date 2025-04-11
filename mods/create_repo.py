@@ -14,7 +14,7 @@ def create_repo(repo_params: ParameterModel):
     logger = set_logger(__name__)
     logger.info("Creating repository...")
     
-    g = Github(setting.GITHUB_TOKEN)
+    g = Github(setting.PERSONAL_TOKEN)
     user = g.get_user()
     try:
         # リポジトリの重複チェック

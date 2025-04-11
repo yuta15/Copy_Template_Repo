@@ -4,7 +4,7 @@ import os
 
 class Settings(BaseSettings):
     """Settings for the application."""
-    GITHUB_TOKEN: str = os.environ.get('GITHUB_TOKEN')
+    PERSONAL_TOKEN: str = os.environ.get('PERSONAL_TOKEN')
     GITHUB_ACTOR: str = os.environ.get('GITHUB_ACTOR')
     ROOT_DIR: str = os.getcwd()
     PARAMETER_FILE: str = f'{ROOT_DIR}/params.json'

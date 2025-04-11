@@ -1,37 +1,39 @@
 import git
 import github
 import os
+import sys
 from mods.setting import setting
 
-repository = git.Repo.init('../test')
-# remote = repository.create_remote(name="origin", url='https://github.com/yuta15/test6.git')
+os.chdir('/home/anzai/Actions/test')
+if not '.git' in os.listdir():
+    repository = git.Repo.init()
+else:
+    repository = git.Repo()
 index = repository.index
-# remote.pull('main')
-os.chdir('../test')
 with open('.git/config', 'r') as f:
     config = f.readlines()
 if '[remote "origin"]\n' in config:
     remote = repository.remote('origin')
     print('exists')
 else:
-    remote = repository.create_remote('origin', url=f'https://github.com/yuta15:{setting.GITHUB_TOKEN}/test6.git')
+    remote = repository.create_remote('origin', url=f'https://{setting.PERSONAL_TOKEN}@github.com/yuta15/test_repo4.git')
     print('not exists')
-remote.pull('main')
+print(repository.head.is_valid())
+print(os.getcwd())
+print(os.listdir())
 print(repository.active_branch.name)
+remote.pull('main')
+print(repository.head.is_valid())
 
+with open('test12.py', 'w') as f:
+    f.write('test12')
 
-with open('test.py', 'w') as f:
-    f.write('test')
-
-
-
-index = repository.index
-index.add(["test.py"])
+print(os.getcwd())
+print(os.listdir())
+index.add('*')
+print(os.getcwd())
+print(os.listdir())
 index.commit("Add files")
-remote.push(repository.active_branch.name)
-
-g = github.Github(setting.GITHUB_TOKEN)
-user = g.get_user()
-repos = user.get_repos()
-fetched_repo_names = [repo.name for repo in repos]
-print(fetched_repo_names)
+print(os.getcwd())
+print(os.listdir())
+remote.push('refs/heads/main')
