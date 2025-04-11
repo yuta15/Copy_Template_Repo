@@ -10,6 +10,7 @@ from mods.clone_repos import clone_repos
 from mods.set_docker_compose import set_docker_compose
 from mods.push_files import push_files
 from mods.logger import set_logger
+from mods.init_repo import init_repo
 
 def main():
     """main function"""
