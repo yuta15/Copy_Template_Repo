@@ -1,6 +1,6 @@
 {
     "repository":{
-        "repository_name": "copied_repo_1234445",
+        "repository_name": "copied_repo_123",
         "branches": ["test"],
         "clone_repositories": [
             "https://github.com/yuta15/template_python_app.git"
