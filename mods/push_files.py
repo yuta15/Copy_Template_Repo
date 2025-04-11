@@ -31,6 +31,9 @@ def push_files(repo):
         exec_cmd('git branch -a')
         exec_cmd('git log')
         exec_cmd('git status')
+        
+        logger.info('check out to main branch...')
+        index.checkout('main')
 
         logger.info('Adding files...')
         index.add("*")
