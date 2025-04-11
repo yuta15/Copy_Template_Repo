@@ -25,7 +25,7 @@ def push_files(repo):
         logger.info(f"Active branch: {act_branch}")
         
         logger.info('pulling...')
-        remote.pull(act_branch)
+        remote.pull('main')
         
         logger.info(repository.branches)
         logger.info('Adding files...')
