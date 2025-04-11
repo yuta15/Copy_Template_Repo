@@ -19,7 +19,8 @@ def create_repo(repo_params: ParameterModel):
     try:
         # リポジトリの重複チェック
         repos = user.get_repos()
-        if not repo_params.repository.repository_name in [repo.name for repo in repos]:
+        fetched_repo_names = [repo.name for repo in repos]
+        if not repo_params.repository.repository_name in fetched_repo_names:
             repo = user.create_repo(
                 name=repo_params.repository.repository_name,
                 private=False,
@@ -28,11 +29,9 @@ def create_repo(repo_params: ParameterModel):
             )
         else:
             logger.info(f"Repository {repo_params.repository.repository_name} already exists.")
-            for repo in repos:
-                if repo.name == repo_params.repository.repository_name:
-                    repo = repo
-                    break
-
+            repo_name_index = fetched_repo_names.index(repo_params.repository.repository_name)
+            repo = repos[repo_name_index]
+            
     except GithubException as e:
         logger.error(f"Failed to create repository: {e}")
         sys.exit(1)

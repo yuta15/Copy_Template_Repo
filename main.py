@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import sys
-import os   
+import os
 
 from mods.setting import setting
 from mods.read_params import read_params

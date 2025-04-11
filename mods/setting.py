@@ -8,6 +8,7 @@ class Settings(BaseSettings):
     GITHUB_ACTOR: str = os.environ.get('GITHUB_ACTOR')
     ROOT_DIR: str = os.getcwd()
     PARAMETER_FILE: str = f'{ROOT_DIR}/params.json'
+    USERNAME: str = "yuta15"
 
     model_config = SettingsConfigDict(
         env_file='env',

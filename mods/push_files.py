@@ -11,12 +11,16 @@ def push_files(repo):
     
     try:
         # リポジトリ変更
+        remote_repo_url = f'https://github.com/{setting.USERNAME}:{setting.GITHUB_TOKEN}/{repo.name}.git'
         os.chdir(setting.ROOT_DIR+"/templates")
         repository = git.Repo.init(f'{setting.ROOT_DIR}/templates')
-        remote = repository.create_remote(name="origin", url=repo.html_url)
+        remote = repository.create_remote(name="origin", url=remote_repo_url)
         index = repository.index
+        
         remote.pull('main')
         logger.info(repository.branches)
+        act_branch = repository.active_branch.name
+        logger.info(f"Active branch: {act_branch}")
         index.add(["."])
         index.commit("Add files")
         remote.push('master')
