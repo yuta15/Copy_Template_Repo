@@ -1,6 +1,5 @@
-#!/usr/bin/env python
+import os
 
-
-a = 'dsfs/sdfskjdf'
-a.split('/')
-print(a.split('/')[-1])
+print(os.listdir())
+os.chdir("mods")
+print(os.listdir())
