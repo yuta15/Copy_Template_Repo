@@ -19,7 +19,7 @@ def push_files(repo):
         logger.info(repository.branches)
         index.add(["."])
         index.commit("Add files")
-        remote.push('main')
+        remote.push('master')
     except Exception as e:
         logger.error(f"Push failed: {e}")
         raise
