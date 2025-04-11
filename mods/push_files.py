@@ -11,7 +11,7 @@ def push_files(repo):
     
     try:
         # リポジトリ変更
-        remote_repo_url = f'https://github.com/{setting.USERNAME}:{setting.GITHUB_TOKEN}/{repo.name}.git'
+        remote_repo_url = f'git@github.com:{setting.USERNAME}:{setting.GITHUB_TOKEN}/{repo.name}.git'
         os.chdir(setting.ROOT_DIR+"/templates")
         
         logger.info('Initializing repository...')
