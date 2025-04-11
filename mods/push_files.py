@@ -11,7 +11,7 @@ def push_files(repo):
     try:
         # リポジトリ変更
         os.chdir(setting.ROOT_DIR+"/templates")
-        repository = git.Repo()
+        repository = git.Repo(f'{setting.ROOT_DIR}/templates')
         remote = repository.create_remote(name="origin", url=repo.html_url)
         index = repository.index
         
