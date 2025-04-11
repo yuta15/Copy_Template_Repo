@@ -27,7 +27,11 @@ def push_files(repo):
         logger.info('pulling...')
         remote.pull('main')
         
-        logger.info(repository.branches)
+        logger.info('Checking if branch exists...')
+        exec_cmd('git branch -a')
+        exec_cmd('git log')
+        exec_cmd('git status')
+
         logger.info('Adding files...')
         index.add("*")
         
@@ -43,3 +47,17 @@ def push_files(repo):
     
     else:
         logger.info("Push completed")
+        
+        
+def exec_cmd(cmd):
+    """コマンドを実行する関数"""
+    logger = set_logger(__name__)
+    logger.info(f"Executing command: {cmd}")
+    
+    try:
+        logger.info(os.system(cmd))
+    except Exception as e:
+        logger.error(f"Command execution failed: {e}")
+        raise
+    else:
+        logger.info("Command executed successfully")
