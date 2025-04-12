@@ -1,8 +1,10 @@
 name: copy_repos_workflow
 on: 
-    workflow_dispatch:
+  push:
+    branches:
+      - 'create/**'
 env:
-    PERSONAL_TOKEN: ${{ secrets.TOKEN}}
+    PERSONAL_TOKEN: ${{ secrets.TOKEN }}
 
 jobs:
     create_repo:
