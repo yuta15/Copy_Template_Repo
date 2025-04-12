@@ -29,6 +29,7 @@ def set_docker_compose(repo_params: ParameterModel):
             f.write(yaml.safe_dump(container_full))
         logger.info(f'change dir:\n{exec_cmd("ls -la")}')
         
+        
     except Exception as e:
         logger.error(f'Error in set_docker_compose: {e}')
         raise e
