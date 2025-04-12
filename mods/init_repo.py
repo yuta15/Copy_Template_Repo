@@ -30,7 +30,11 @@ def init_repo(repo):
         # Checkout to the main branch
         exec_cmd('git checkout -b main')
         logger.info(f"Active branch: {repository.active_branch.name}")
+
+        logger.info('Cuurent config')
+        exec_cmd('git config -l')
         
+    
     except Exception as e:
         logger.error(f"Failed to initialize repository: {e}")
         raise
