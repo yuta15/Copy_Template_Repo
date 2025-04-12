@@ -15,12 +15,17 @@ def init_repo(repo):
         if not os.path.exists(f'{setting.ROOT_DIR}/templates'):
             logger.info(f"Creating templates directory")
             os.mkdir(f'{setting.ROOT_DIR}/templates')
+
         # Initialize the repository
-        remote_repo_url = f'https://{setting.PERSONAL_TOKEN}@github.com/{setting.USERNAME}/{repo.name}.git'
+        os.chdir(f'{setting.ROOT_DIR}/templates')
+        logger.info(f"Current working directory: {os.getcwd()}")
         repository = git.Repo.init()
         
         # Remote repository setup
-        repository.create_remote(name="origin", url=remote_repo_url)
+        repository.create_remote(
+            name="origin", 
+            url=f'https://{setting.PERSONAL_TOKEN}@github.com/{setting.USERNAME}/{repo.name}.git'
+            )
         
         # Checkout to the main branch
         exec_cmd('git checkout -b main')
