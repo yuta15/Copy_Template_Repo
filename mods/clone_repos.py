@@ -16,5 +16,5 @@ def clone_repos(repo_params: ParameterModel):
         path = f'{setting.ROOT_DIR}/templates/{dir_name}'
         git.Repo.clone_from(url, path)
         os.chdir(f'{setting.ROOT_DIR}/templates/{dir_name}')
-        shutil.rmtree(f'{dir_name}/.git')
+        shutil.rmtree('.git')
     logger.info(f"Clone completed in {setting.ROOT_DIR}/templates")
