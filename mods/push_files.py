@@ -38,8 +38,11 @@ def push_files(repo):
         logger.info('committing...')
         index.commit("Add files")
         
+        logger.info('gitlog...')
+        exec_cmd('git log')
+        
         logger.info('pushing...')
-        exec_cmd('git push origin main')
+        exec_cmd('git push origin main:main')
         
     except Exception as e:
         logger.error(f"Push failed: {e}")
