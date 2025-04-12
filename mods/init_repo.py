@@ -27,6 +27,9 @@ def init_repo(repo):
             url=f'https://{setting.PERSONAL_TOKEN}@github.com/{setting.USERNAME}/{repo.name}.git'
             )
         
+        # set username
+        exec_cmd(f'git config user.name {setting.USERNAME}')
+        
         # Checkout to the main branch
         exec_cmd('git checkout -b main')
         logger.info(f"Active branch: {repository.active_branch.name}")
