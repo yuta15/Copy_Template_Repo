@@ -21,7 +21,7 @@ def main():
     clone_repos(PARAMS)
     logger.info(f'{os.listdir(f"{setting.ROOT_DIR}/templates")}')
     set_docker_compose(PARAMS)
-    push_files(repo)
+    push_files()
 
 
 if __name__ == "__main__":
