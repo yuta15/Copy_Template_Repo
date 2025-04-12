@@ -1,7 +1,7 @@
 {
     "repository":{
-        "repository_name": "copied_repo_123",
-        "branches": ["test"],
+        "repository_name": "TEST_REPO1",
+        "branches": ["main"],
         "clone_repositories": [
             "https://github.com/yuta15/template_python_app.git"
         ]
@@ -20,7 +20,7 @@
     ],
     "containers":[
         {
-            "container_name": "test",
+            "container_name": "sdsddsdf",
             "image": "python:latest",
             "ports": ["8000:8000"],
             "workdir": "container_workdir",

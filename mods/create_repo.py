@@ -1,4 +1,4 @@
-from github import Github, Repository, NamedUser, AuthenticatedUser
+from github import Github, Repository
 from github.GithubException import GithubException
 import sys
 
@@ -64,7 +64,7 @@ def create_repo(repo_params: ParameterModel) -> Repository:
         return repo
 
 
-def fetch_remote_repos(user: NamedUser | AuthenticatedUser) -> list:
+def fetch_remote_repos(user) -> list:
     """
     リモートリポジトリを取得する関数
     Args:
