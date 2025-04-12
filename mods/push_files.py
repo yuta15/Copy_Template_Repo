@@ -26,9 +26,8 @@ def push_files(repo):
         exec_cmd('git log')
         exec_cmd('git status')
         
-        
-        logger.info('check out to main branch...')
-        exec_cmd('git checkout -b main')
+        # logger.info('check out to main branch...')
+        # exec_cmd('git checkout -b main')
         
         act_branch = repository.active_branch.name
         logger.info(f"Active branch: {act_branch}")
@@ -40,7 +39,7 @@ def push_files(repo):
         index.commit("Add files")
         
         logger.info('pushing...')
-        remote.push('remotes/origin/main')
+        exec_cmd('git push origin main')
         
     except Exception as e:
         logger.error(f"Push failed: {e}")
