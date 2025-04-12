@@ -1,5 +1,6 @@
 import git
 import github
+import shutil
 import os
 import sys
 from mods.setting import setting
@@ -29,13 +30,4 @@ with open('test12.py', 'w') as f:
     f.write('test12')
     
     
-index.checkout()
-
-print(os.getcwd())
-print(os.listdir())
-index.add('*')
-print(os.getcwd())
-print(os.listdir())
-index.commit("Add files")
-print(os.getcwd())
-print(os.listdir())
+shutil.rmtree('.git/branches')
